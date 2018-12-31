@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import UserSelect from './UserSelect';
 
 class LoginBox extends Component {
+  
+
   render() {
     console.log('USERS = ', this.props.users)
     const userArr = [];
@@ -15,9 +18,12 @@ class LoginBox extends Component {
         <h3>Please Select a User</h3>
         <select>
           {userArr.map((user) => (
-            <option value={user}>{user}</option>
+            <UserSelect key={user} id={user} />
             ))}
         </select>
+        <button>
+          Login
+        </button>
       </div>
     )
   }
