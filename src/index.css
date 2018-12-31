@@ -12,3 +12,10 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.login-box {
+  width: 200px;
+  height: 100px;
+  border: 1px solid black;
+  margin: auto;
+}
