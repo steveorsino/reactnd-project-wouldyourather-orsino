@@ -17,7 +17,9 @@ class Nav extends Component {
     console.log('Users: ',users);
     console.log('authedUser: ',authedUser)
     const userName = users[authedUser.authedUser].name;
+    const userImg = users[authedUser.authedUser].avatarURL;
     console.log('userName: ',userName)
+    console.log('userImg: ',userImg)
 
     return (
       <nav className='nav'>
@@ -29,6 +31,9 @@ class Nav extends Component {
           </li>
           <li>
             Hello {userName}
+          </li>
+          <li>
+            <img className='nav-avatar' src={userImg} alt='no pic found' />
           </li>
         </ul>
       </nav>
