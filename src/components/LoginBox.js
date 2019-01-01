@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import UserSelect from './UserSelect';
 import { setAuthedUser } from '../actions/authedUser'
+import { Redirect } from 'react-router-dom';
 
 
 class LoginBox extends Component {
   state = {
     authedUser: '',
+    redirect: false,
   }
 
   handleChange = (e) => {
@@ -21,12 +23,16 @@ class LoginBox extends Component {
     if (this.state.authedUser !== ''){
       console.log('In handleSubmit ', this.state.authedUser)
       this.props.dispatch(setAuthedUser(this.state.authedUser));
-      //todo: redirect to home
+      this.setState({ redirect: true });
     }else
       alert("You must select a user to proceed")
   }
 
   render() {
+    if (this.state.redirect) {
+      return <Redirect to='/' />
+    }
+
     const userArr = [];
     for (let user in this.props.users) {
       userArr.push([user]);

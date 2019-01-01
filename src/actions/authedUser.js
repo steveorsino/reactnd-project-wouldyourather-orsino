@@ -7,8 +7,8 @@ export function setAuthedUser (id) {
   }
 }
 
-export function handleSetAuthedUser (id) {
-  return (dispatch) => {
-    dispatch(setAuthedUser(id))
-  }
-}
+// export function handleSetAuthedUser (id) {
+//   return (dispatch) => {
+//     dispatch(setAuthedUser(id))
+//   }
+// }
