@@ -13,6 +13,17 @@ code {
     monospace;
 }
 
+ul {
+  width:50%;
+  margin:auto;
+}
+
+nav ul li {
+  display: inline;
+  text-align: center;
+  padding:25px;
+}
+
 .login-box {
   width: 500px;
   text-align: center;

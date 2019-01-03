@@ -6,20 +6,14 @@ import { Redirect } from 'react-router-dom';
 class Nav extends Component {
 
   render(){
-    console.log('Authed User: ', this.props.authedUser)
 
     if (this.props.authedUser === '') {
-      console.log('Authed User == blank: ', this.props.authedUser)
       return <Redirect to='/login' />
     }
 
     const { users, authedUser } = this.props;
-    console.log('Users: ',users);
-    console.log('authedUser: ',authedUser)
     const userName = users[authedUser.authedUser].name;
     const userImg = users[authedUser.authedUser].avatarURL;
-    console.log('userName: ',userName)
-    console.log('userImg: ',userImg)
 
     return (
       <nav className='nav'>
