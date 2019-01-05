@@ -37,7 +37,7 @@ class LoginBox extends Component {
     for (let user in this.props.users) {
       userArr.push([user]);
     }
-
+    console.log('Loginbox props', this.props)
     return (
       <div className='login-box'>
         <h3>Please Select a User</h3>
