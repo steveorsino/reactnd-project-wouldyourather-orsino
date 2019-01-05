@@ -9,7 +9,13 @@ class QuestionPreview extends Component {
       <Link className='question-preview'
         to={`/questions/${this.props.id}`}
       >
-        {this.props.author} asks...
+        <div className='preview-header'>
+          <img src={this.props.avatar} alt='not shown' />
+          {this.props.author} asks...
+        </div>
+        
+        <p>Would you rather...</p>
+
       </Link>
     )
   }

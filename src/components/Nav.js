@@ -23,20 +23,19 @@ class Nav extends Component {
       <nav className='nav'>
         <ul>
           <li>
-            <NavLink to='/' exact activeClassName='active'>
+            <NavLink to='/' exact className='nav-link' activeClassName='active'>
               Dashboard
             </NavLink>
           </li>
           <li>
-            Hello {userName}
-          </li>
-          <li>
-            <img className='nav-avatar' src={userImg} alt='no pic found' />
-          </li>
-          <li>
-            <NavLink to='/login' exact activeClassName='active'>
+            <NavLink to='/login' exact className='nav-link' activeClassName='active'>
               log Out
             </NavLink>
+          </li>
+          <li>
+            <span>Welcome {userName}</span>
+            {/*<img className='nav-avatar' src={userImg} alt='no pic found' />*/}
+            
           </li>
         </ul>
       </nav>

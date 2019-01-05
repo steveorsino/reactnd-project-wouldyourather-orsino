@@ -26,29 +26,32 @@ class QuestionList extends Component {
 
     return (
       <div className='question-list-container'>
-        <div>
+        <div className='btn-container'>
           <button id='unanswered' className='answered-btn btn-active' onClick={this.handleUnanswered}>
             Unanswered
           </button>
           <button id='answered' className='answered-btn' onClick={this.handleAnswered}>
             Answered
           </button>
-          {Object.values(questions).filter((question) => {
-            return (
-              this.state.showAnswered === Object.keys(users[authedUser.authedUser].answers).includes(question.id)
-            )
-            }).map((question) => {
-              return (
-                  <QuestionPreview
-                    key={question.id}
-                    id={question.id}
-                    author={users[question.author].name}
-                    className='unanswered'
-                    show={Object.keys(users[authedUser.authedUser].answers).includes(question.id) }
-                  />
-              )
-          })}
         </div>
+        {questions && Object.values(questions).filter((question) => {
+          return (
+            this.state.showAnswered === Object
+              .keys(users[authedUser.authedUser].answers)
+              .includes(question.id)
+          )
+          }).map((question) => {
+            return (
+                <QuestionPreview
+                  key={question.id}
+                  id={question.id}
+                  author={users[question.author].name}
+                  avatar={users[question.author].avatarURL}
+                  className='unanswered'
+
+                />
+            )
+        })}
       </div>
     )
   }
