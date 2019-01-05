@@ -47,6 +47,12 @@ nav ul li {
   width:200px;
   background-color: transparent;
   margin: auto;
+  padding: 10px;
+}
+
+.btn-active {
+  background-color: green;
+  color:white;
 }
 
 .question-preview {

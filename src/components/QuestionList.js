@@ -8,27 +8,28 @@ class QuestionList extends Component {
   }
 
   handleAnswered = () => {
-    this.setState({showAnswered: true})
+    this.setState({showAnswered: true});
+    document.getElementById('unanswered').classList.remove('btn-active');
+    document.getElementById('answered').classList.add('btn-active');
   }
   handleUnanswered = () => {
     this.setState({showAnswered: false})
+    document.getElementById('unanswered').classList.add('btn-active');
+    document.getElementById('answered').classList.remove('btn-active');
   }
   render() {
-    // let answered = [];
-    // let unanswered = [];
+
     const { users, questions, authedUser } = this.props;
     console.log('Users',Object.values(users));
     console.log('Questions', Object.values(questions));
 
-    
-    
     return (
       <div className='question-list-container'>
         <div>
-          <button className='answered-btn' onClick={this.handleUnanswered}>
+          <button id='unanswered' className='answered-btn btn-active' onClick={this.handleUnanswered}>
             Unanswered
           </button>
-          <button className='answered-btn' onClick={this.handleAnswered}>
+          <button id='answered' className='answered-btn' onClick={this.handleAnswered}>
             Answered
           </button>
           {Object.values(questions).filter((question) => {
