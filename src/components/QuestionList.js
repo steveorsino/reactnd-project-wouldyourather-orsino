@@ -5,7 +5,7 @@ import QuestionPreview from './QuestionPreview';
 class QuestionList extends Component {
   render() {
     
-    const { users, questions } = this.props;
+    const { users, questions, authedUser } = this.props;
     console.log('Users',Object.values(users));
     console.log('Questions', Object.values(questions));
     
@@ -18,6 +18,8 @@ class QuestionList extends Component {
                   key={question.id}
                   id={question.id}
                   author={users[question.author].name}
+                  className={}
+                  //show={users[authedUser.authedUser].answers}
                 />
             )
           })}
@@ -27,10 +29,11 @@ class QuestionList extends Component {
   }
 }
 
-const mapStateToProps = ({ users, questions }) => {
+const mapStateToProps = ({ users, questions, authedUser }) => {
   return {
     users,
     questions,
+    authedUser,
   }
 }
 
