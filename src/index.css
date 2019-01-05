@@ -37,6 +37,18 @@ nav ul li {
   width: 30px;
 }
 
+.question-list-container {
+  width:500px;
+  padding: 25px;
+  margin: auto;
+}
+
+.answered-btn {
+  width:200px;
+  background-color: transparent;
+  margin: auto;
+}
+
 .question-preview {
   width: 400px;
   height: 150px;
