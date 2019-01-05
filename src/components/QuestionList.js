@@ -17,6 +17,7 @@ class QuestionList extends Component {
     document.getElementById('unanswered').classList.add('btn-active');
     document.getElementById('answered').classList.remove('btn-active');
   }
+
   render() {
 
     const { users, questions, authedUser } = this.props;

@@ -5,6 +5,7 @@ import { handleInitialData } from '../actions/shared'
 import LoginBox from './LoginBox';
 import Nav from './Nav';
 import QuestionList from './QuestionList';
+import Question from './Question'
 
 class App extends Component {
   componentDidMount() {
@@ -29,7 +30,7 @@ class App extends Component {
           <Route 
             exact path='/questions/:id'
             render={() => (
-              <div>Question</div>
+              <Question />
             )}
           />
           <Route
