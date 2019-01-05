@@ -26,6 +26,12 @@ class App extends Component {
               </div>
             )}
           />
+          <Route 
+            exact path='/questions/:id'
+            render={() => (
+              <div>Question</div>
+            )}
+          />
           <Route
             path='/login'
             render={() => (

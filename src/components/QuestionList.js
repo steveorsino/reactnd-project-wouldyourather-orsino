@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import QuestionPreview from './QuestionPreview';
 
 class QuestionList extends Component {
   render() {
@@ -13,9 +14,11 @@ class QuestionList extends Component {
         <div>
           {Object.values(questions).map((question) => {
             return (
-
-                <p key={question.id} >{users[question.author].name}</p>
-
+                <QuestionPreview
+                  key={question.id}
+                  id={question.id}
+                  author={users[question.author].name}
+                />
             )
           })}
         </div>
