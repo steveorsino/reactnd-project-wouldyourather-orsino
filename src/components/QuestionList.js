@@ -47,8 +47,8 @@ class QuestionList extends Component {
                   id={question.id}
                   author={users[question.author].name}
                   avatar={users[question.author].avatarURL}
-                  className='unanswered'
-
+                  option1={question.optionOne.text}
+                  option2={question.optionTwo.text}
                 />
             )
         })}

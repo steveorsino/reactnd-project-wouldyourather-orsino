@@ -5,25 +5,27 @@ class Question extends Component {
   render() {
     const { users, questions, authedUser } = this.props;
     console.log('IN QUESTION: ', this.props)
-
-    console.log(window.location.pathname)
     const pos = window.location.pathname.lastIndexOf('/');
     const id = window.location.pathname.substring(pos + 1);
-    console.log(questions[id])
+    const author = questions[id] ? users[questions[id].author].name : '';
+    const avatar = questions[id] ? users[questions[id].author].avatarURL : '';
 
-    
-
+    console.log('Author: ',author)
     return (
-      <div>
-        <h4>Would you rather...?</h4>
-        <ul>
-          <li>
-            {questions[id] ? questions[id].optionOne.text : ''}
-          </li>
-          <li>
-            {questions[id] ? questions[id].optionTwo.text : ''}
-          </li>
-        </ul>
+      <div className='question'>
+        <div className='preview-header'>
+          <img src={avatar} alt='not shown' />
+          {author} asks...
+        </div>
+        <h4 className='txt-center'>Would you rather...?</h4>
+        <div>
+          <input type='radio' name='optionOne' value='optionOne' />
+          {questions[id] ? questions[id].optionOne.text : ''}
+        </div>
+        <div>
+          <input type='radio' name='optionOne' value='optionOne' />
+          {questions[id] ? questions[id].optionTwo.text : ''}
+        </div>
       </div>
     )
   }

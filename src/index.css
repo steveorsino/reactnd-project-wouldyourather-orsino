@@ -16,15 +16,24 @@ code {
 ul {
   width:50%;
   margin:auto;
+  padding: 20px 10px 20px 10px;
 }
 
-ul li {
+li {
   display: inline;
   text-align: center;
   padding:0px 25px;
+  position: relative;
 }
 
-img {width: 55px;}
+
+img {
+  width: 55px;
+}
+
+.txt-center {
+  text-align: center;
+}
 
 .login-box {
   width: 500px;
@@ -37,10 +46,9 @@ img {width: 55px;}
 }
 
 .nav {
-  height: 50px;
+  
   margin-bottom: 30px;
   box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.18), 0 0 10px 0 rgba(0, 0, 0, 0.14);
-  vertical-align: middle;
   padding-top: 30px;
 }
 
@@ -53,9 +61,6 @@ img {width: 55px;}
   color: #26B5DF;
 }
 
-.nav-avatar {
-  width: 50px;
-}
 
 .question-list-container {
   width: 500px;
@@ -79,20 +84,39 @@ img {width: 55px;}
 
 .question-preview {
   width: 100%;
-  height: 150px;
+  height: auto;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   display: block;
   margin: auto;
   margin-top: 35px;
   color: black;
   text-decoration: none;
+  padding-bottom: 25px;
 }
 .question-preview p {
   text-align: center;
+}
+
+.would-you-rather {
+  font-size: 18px;
+}
+
+.options {
+  color: gray;
+  font-size: 16px;
+  margin: 0 8px;
 }
 
 .preview-header {
   width: 100%;
   padding: 10px;
   display: inline-block;
+}
+
+.question {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  width: 500px;
+  height: auto;
+  padding: 25px;
+  margin: auto;
 }

@@ -17,11 +17,14 @@ class Nav extends Component {
 
     const { users, authedUser } = this.props;
     const userName = users[authedUser.authedUser].name;
-    const userImg = users[authedUser.authedUser].avatarURL;
 
     return (
       <nav className='nav'>
         <ul>
+
+          <li>
+            <span className='welcome-message'>Welcome {userName}</span>
+          </li>
           <li>
             <NavLink to='/' exact className='nav-link' activeClassName='active'>
               Dashboard
@@ -31,12 +34,7 @@ class Nav extends Component {
             <NavLink to='/login' exact className='nav-link' activeClassName='active'>
               log Out
             </NavLink>
-          </li>
-          <li>
-            <span>Welcome {userName}</span>
-            {/*<img className='nav-avatar' src={userImg} alt='no pic found' />*/}
-            
-          </li>
+          </li>          
         </ul>
       </nav>
     )

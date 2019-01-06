@@ -13,9 +13,9 @@ class QuestionPreview extends Component {
           <img src={this.props.avatar} alt='not shown' />
           {this.props.author} asks...
         </div>
-        
-        <p>Would you rather...</p>
-
+        <p className='would-you-rather'>Would you rather...</p>
+        <p className='options'>{this.props.option1}</p>
+        <p className='options'>{this.props.option2}</p>
       </Link>
     )
   }
