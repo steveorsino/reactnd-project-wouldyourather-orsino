@@ -2,6 +2,12 @@ import React, { Component } from 'react';
 import { connect }  from 'react-redux';
 
 class Question extends Component {
+
+  handleVote = (e) => {
+    console.log(e.target.value);
+    
+  }
+
   render() {
     const { users, questions, authedUser } = this.props;
     console.log('IN QUESTION: ', this.props)
@@ -9,8 +15,15 @@ class Question extends Component {
     const id = window.location.pathname.substring(pos + 1);
     const author = questions[id] ? users[questions[id].author].name : '';
     const avatar = questions[id] ? users[questions[id].author].avatarURL : '';
+    const votesOne = questions[id] ? questions[id].optionOne.votes : [];
+    const votesTwo = questions[id] ? questions[id].optionTwo.votes : [];
+    const answeredOne = votesOne.includes(authedUser.authedUser);
+    const answeredTwo = votesTwo.includes(authedUser.authedUser);
+    const answered = answeredOne || answeredTwo;
 
-    console.log('Author: ',author)
+    console.log('Answered? ',answered);
+    console.log('Answered One? ', answeredOne);
+    console.log('Answered Two? ', answeredTwo);
     return (
       <div className='question'>
         <div className='preview-header'>
@@ -18,15 +31,37 @@ class Question extends Component {
           {author} asks...
         </div>
         <h4 className='txt-center'>Would you rather...?</h4>
-        <div>
-          <input type='radio' name='optionOne' value='optionOne' />
+        <div style={{marginBottom: '25px'}}>
+          {!answered && <input type='radio' name='optionOne' value='optionOne' onClick={this.handleVote}/>}
           {questions[id] ? questions[id].optionOne.text : ''}
-        </div>
+          {answeredOne ? <div style={{float: 'right', color: 'green', fontWeight: 'bold'}}>Your Choice!</div> : null}
+          {answered && 
+          <div className='answered-bar'>
+            <span style={{float: 'right'}}>{`${votesOne.length / (votesOne.length + votesTwo.length) *100}%`}</span>
+            <div style={{width: votesOne.length / (votesOne.length + votesTwo.length) *100}} className='answered-fill'>
+            </div>
+          </div>}
+          {answered && <span style={{float: 'right'}}>{`${votesOne.length} of ${votesOne.length + votesTwo.length}`}</span>}
+          </div>
         <div>
-          <input type='radio' name='optionOne' value='optionOne' />
+          {!answered && <input type='radio' name='optionOne' value='optionOne' />}
           {questions[id] ? questions[id].optionTwo.text : ''}
+          {answeredTwo ? <div style={{float: 'right', color: 'green', fontWeight: 'bold'}}>Your Choice!</div> : null}
+          {answered &&
+          <div className='answered-bar'>
+            <span style={{float: 'right'}}>{`${votesTwo.length / (votesOne.length + votesTwo.length) *100}%`}</span>
+            <div style={{width: votesTwo.length / (votesOne.length + votesTwo.length) *100}} className='answered-fill'>
+            </div>
+          </div>}
+          {answered && <span style={{float: 'right'}}>{`${votesTwo.length} of ${votesOne.length + votesTwo.length}`}</span>}
         </div>
+        {       /*   <span>
+        {questions[id] ? questions[id].optionTwo.text : ''}
+        {answered && <span style={{float: 'right'}}>{`${votesTwo.length} of ${votesOne.length + votesTwo.length}`}</span>}
+      </span>
+      <span style={{float: 'right'}}>{`${votesOne.length / (votesOne.length + votesTwo.length) *100}%`}</span>*/}
       </div>
+
     )
   }
 }

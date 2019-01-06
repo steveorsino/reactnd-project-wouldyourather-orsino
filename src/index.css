@@ -120,3 +120,14 @@ img {
   padding: 25px;
   margin: auto;
 }
+
+.answered-bar {
+  width: 100px;
+  height: 25px;
+  background-color: lightgray;
+}
+
+.answered-fill {
+  background-color: #26B5DF;
+  height: 100%;
+}
