@@ -1,11 +1,19 @@
 import React, { Component } from 'react';
 import { connect }  from 'react-redux';
+import { handleSaveQuestionAnswer } from '../actions/questions';
+import { dispatch } from 'rxjs/internal/observable/pairs';
+
 
 class Question extends Component {
 
   handleVote = (e) => {
-    console.log(e.target.value);
-    
+    const answer = e.target.value;
+    const { authedUser } = this.props.authedUser;
+    const pos = window.location.pathname.lastIndexOf('/');
+    const id = window.location.pathname.substring(pos + 1);
+    console.log('Handle Vote ', `${answer}, ${authedUser}, ${id}`);
+
+    this.props.dispatch(handleSaveQuestionAnswer(id, authedUser, answer))
   }
 
   render() {
@@ -44,7 +52,7 @@ class Question extends Component {
           {answered && <span style={{float: 'right'}}>{`${votesOne.length} of ${votesOne.length + votesTwo.length}`}</span>}
           </div>
         <div>
-          {!answered && <input type='radio' name='optionOne' value='optionOne' />}
+          {!answered && <input type='radio' name='optionTwo' value='optionTwo' onClick={this.handleVote}/>}
           {questions[id] ? questions[id].optionTwo.text : ''}
           {answeredTwo ? <div style={{float: 'right', color: 'green', fontWeight: 'bold'}}>Your Choice!</div> : null}
           {answered &&
