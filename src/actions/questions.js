@@ -10,10 +10,10 @@ export function receiveQuestions (questions) {
   }
 }
 
-export function handleSaveQuestionAnswer(id, authedUser, answer) {
+export function handleSaveQuestionAnswer(qid, authedUser, answer) {
   return (dispatch) => {
-
-    return saveQuestionAnswer({ authedUser, id, answer })
+    console.log('IN ACTION: ', qid)
+    return saveQuestionAnswer({ authedUser, qid, answer })
       .then((res)=>{console.log('The Res: ', res)});
   }
 }
