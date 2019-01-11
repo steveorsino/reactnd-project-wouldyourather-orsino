@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect }  from 'react-redux';
 import { handleSaveQuestionAnswer } from '../actions/questions';
-import { dispatch } from 'rxjs/internal/observable/pairs';
+import { handleUserVote } from '../actions/users'
+
 
 
 class Question extends Component {
@@ -13,7 +14,8 @@ class Question extends Component {
     const id = window.location.pathname.substring(pos + 1);
     console.log('Handle Vote ', `${answer}, ${authedUser}, ${id}`);
 
-    this.props.dispatch(handleSaveQuestionAnswer(id, authedUser, answer))
+    this.props.dispatch(handleSaveQuestionAnswer(id, authedUser, answer, () =>
+    this.props.dispatch (handleUserVote(id, authedUser, answer)) ))
   }
 
   render() {
@@ -45,7 +47,7 @@ class Question extends Component {
           {answeredOne ? <div style={{float: 'right', color: 'green', fontWeight: 'bold'}}>Your Choice!</div> : null}
           {answered && 
           <div className='answered-bar'>
-            <span style={{float: 'right'}}>{`${votesOne.length / (votesOne.length + votesTwo.length) *100}%`}</span>
+            <span style={{float: 'right'}}>{`${( votesOne.length / (votesOne.length + votesTwo.length) *100 ).toFixed(1)}%`}</span>
             <div style={{width: votesOne.length / (votesOne.length + votesTwo.length) *100}} className='answered-fill'>
             </div>
           </div>}
@@ -57,17 +59,12 @@ class Question extends Component {
           {answeredTwo ? <div style={{float: 'right', color: 'green', fontWeight: 'bold'}}>Your Choice!</div> : null}
           {answered &&
           <div className='answered-bar'>
-            <span style={{float: 'right'}}>{`${votesTwo.length / (votesOne.length + votesTwo.length) *100}%`}</span>
+            <span style={{float: 'right'}}>{`${( votesTwo.length / (votesOne.length + votesTwo.length) *100 ).toFixed(1) }%`}</span>
             <div style={{width: votesTwo.length / (votesOne.length + votesTwo.length) *100}} className='answered-fill'>
             </div>
           </div>}
           {answered && <span style={{float: 'right'}}>{`${votesTwo.length} of ${votesOne.length + votesTwo.length}`}</span>}
         </div>
-        {       /*   <span>
-        {questions[id] ? questions[id].optionTwo.text : ''}
-        {answered && <span style={{float: 'right'}}>{`${votesTwo.length} of ${votesOne.length + votesTwo.length}`}</span>}
-      </span>
-      <span style={{float: 'right'}}>{`${votesOne.length / (votesOne.length + votesTwo.length) *100}%`}</span>*/}
       </div>
 
     )
