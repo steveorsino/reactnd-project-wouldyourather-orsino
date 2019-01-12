@@ -31,6 +31,11 @@ class Nav extends Component {
             </NavLink>
           </li>
           <li>
+            <NavLink to='/add' exact className='nav-link' activeClassName='active'>
+              Add Question
+            </NavLink>
+          </li>
+          <li>
             <NavLink to='/login' exact className='nav-link' activeClassName='active'>
               log Out
             </NavLink>

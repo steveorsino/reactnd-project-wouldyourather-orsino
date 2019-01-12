@@ -5,7 +5,8 @@ import { handleInitialData } from '../actions/shared'
 import LoginBox from './LoginBox';
 import Nav from './Nav';
 import QuestionList from './QuestionList';
-import Question from './Question'
+import Question from './Question';
+import AddQuestion from './AddQuestion';
 
 class App extends Component {
   componentDidMount() {
@@ -40,6 +41,12 @@ class App extends Component {
             path='/login'
             render={() => (
               <LoginBox />
+            )}
+          />
+          <Route
+            path='/add'
+            render={() => (
+              <AddQuestion />
             )}
           />
         </Fragment>

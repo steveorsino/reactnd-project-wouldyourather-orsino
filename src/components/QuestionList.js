@@ -51,6 +51,8 @@ class QuestionList extends Component {
                   option2={question.optionTwo.text}
                 />
             )
+        }).sort((a,b) => {
+          return questions[b.props.id].timestamp - questions[a.props.id].timestamp
         })}
       </div>
     )
