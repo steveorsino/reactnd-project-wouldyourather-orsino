@@ -21,6 +21,13 @@ export function updateQuestion(qid, authedUser, answer) {
   }
 }
 
+export function saveUserQuestion(question) {
+  return {
+    type: SAVE_QUESTION,
+    question,
+  }
+}
+
 export function handleSaveQuestionAnswer(qid, authedUser, answer, userCb) {
   return (dispatch) => {
     console.log('IN ACTION: ', qid)
@@ -36,7 +43,15 @@ export function handleSaveQuestion(question, userCb) {
   return (dispatch) => {
     console.log('IN ACTION: ', question)
     return saveQuestion(question)
-      .then((formattedQuestion) => console.log('FORMATTED QUESTION: ', formattedQuestion))
+      .then((formattedQuestion) => {
+        console.log('FORMATTED QUESTION: ', formattedQuestion)
+        dispatch(saveUserQuestion(formattedQuestion))
+        return userCb(formattedQuestion)
+      })
+      // .then((formattedQuestion) => {
+        
+        
+      // })
   }
 }
 

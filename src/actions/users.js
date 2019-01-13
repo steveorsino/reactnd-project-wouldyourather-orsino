@@ -19,9 +19,10 @@ export function handleUserVote(qid, authedUser, answer) {
   }
 }
 
-export function handleUserAddQuestion () {
+export function handleUserAddQuestion (formattedQuestion, authedUser) {
   return {
     type: ADD_QUESTION_USER,
-    
+    formattedQuestion,
+    authedUser
   }
 }

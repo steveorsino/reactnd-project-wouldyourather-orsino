@@ -14,7 +14,6 @@ class AddQuestion extends Component {
     this.setState(()=>({
       [id]: value
     }));
-    console.log(this.state)
   }
 
   handleAddQuestion = () => {
@@ -26,8 +25,12 @@ class AddQuestion extends Component {
     const author = authedUser;
     console.log('In handleAddQuestion: ', {optionOneText, optionTwoText, author})
     dispatch (handleSaveQuestion({optionOneText, optionTwoText, author}, 
-      () => handleUserAddQuestion() ))
-
+      (fq) =>  {
+        console.log("IN CALLBACK", fq)
+        return dispatch(handleUserAddQuestion(fq, authedUser))
+      })
+    )
+//handleUserAddQuestion()
   }
 
   render() {

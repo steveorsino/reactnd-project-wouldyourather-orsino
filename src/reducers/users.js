@@ -21,8 +21,13 @@ export default function users (state={}, action) {
       }
 
     case ADD_QUESTION_USER : 
+      console.log('ADD_QUESTION_USER', action)
       return {
         ...state,
+        [action.authedUser]: {
+          ...state[action.authedUser],
+          questions: state[action.authedUser].questions.concat([action.formattedQuestion.id])
+        }
       }
     default :
       return state
