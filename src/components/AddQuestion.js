@@ -26,13 +26,14 @@ class AddQuestion extends Component {
     const optionTwoText = optionTwo;
     const author = authedUser;
 
-    dispatch (handleSaveQuestion({optionOneText, optionTwoText, author}, 
+    dispatch (handleSaveQuestion(
+      { optionOneText, optionTwoText, author }, 
       (fq) =>  {
-        dispatch(handleUserAddQuestion(fq, authedUser))
-        console.log('HERE!!!!!!!!!!!!!!!!');
+        dispatch(handleUserAddQuestion(fq, authedUser));
         this.setState({ redirect: true });
       })
-    )
+    );
+    
   }
 
   render() {

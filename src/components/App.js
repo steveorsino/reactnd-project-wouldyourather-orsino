@@ -7,6 +7,7 @@ import Nav from './Nav';
 import QuestionList from './QuestionList';
 import Question from './Question';
 import AddQuestion from './AddQuestion';
+import Leaderboard from './Leaderboard';
 
 class App extends Component {
   componentDidMount() {
@@ -49,6 +50,15 @@ class App extends Component {
               <Fragment>
                 <Nav />
                 <AddQuestion />
+              </Fragment>
+            )}
+          />
+          <Route
+            path='/leaderboard'
+            render={() => (
+              <Fragment>
+                <Nav />
+                <Leaderboard />
               </Fragment>
             )}
           />
