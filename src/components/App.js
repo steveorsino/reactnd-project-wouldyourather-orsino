@@ -46,7 +46,10 @@ class App extends Component {
           <Route
             path='/add'
             render={() => (
-              <AddQuestion />
+              <Fragment>
+                <Nav />
+                <AddQuestion />
+              </Fragment>
             )}
           />
         </Fragment>

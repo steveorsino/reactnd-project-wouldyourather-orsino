@@ -14,8 +14,9 @@ class Question extends Component {
     const id = window.location.pathname.substring(pos + 1);
     console.log('Handle Vote ', `${answer}, ${authedUser}, ${id}`);
 
-    this.props.dispatch(handleSaveQuestionAnswer(id, authedUser, answer, () =>
-    this.props.dispatch (handleUserVote(id, authedUser, answer)) ))
+    this.props.dispatch(handleSaveQuestionAnswer(id, authedUser, answer,
+      () => this.props.dispatch (handleUserVote(id, authedUser, answer))
+    ))
   }
 
   render() {
