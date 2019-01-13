@@ -21,6 +21,8 @@ class Leaderboard extends Component {
               numAnswered={Object.keys(user.answers).length}
             />
           )
+        }).sort((a,b) => {
+          return ( (b.props.numAsked + b.props.numAnswered) - (a.props.numAsked + a.props.numAnswered) )
         })}
         <Leader />
       </div>
