@@ -17,3 +17,7 @@ export function handleUserVote(qid, authedUser, answer) {
     answer
   }
 }
+
+export function handleUserAddQuestion () {
+  
+}

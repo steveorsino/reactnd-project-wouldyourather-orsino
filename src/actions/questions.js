@@ -1,8 +1,8 @@
-import { saveQuestionAnswer } from '../utils/api';
+import { saveQuestionAnswer, saveQuestion } from '../utils/api';
 
 export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS';
 export const UPDATE_QUESTION = 'UPDATE_QUESTION';
-
+export const SAVE_QUESTION = 'SAVE_QUESTION';
 
 export function receiveQuestions (questions) {
   return {
@@ -29,3 +29,13 @@ export function handleSaveQuestionAnswer(qid, authedUser, answer, userCb) {
       .then(() => userCb(qid, authedUser, answer));
   }
 }
+
+
+
+export function handleSaveQuestion(question, userCb) {
+  return (dispatch) => {
+    return saveQuestion(question).then()
+  }
+}
+
+

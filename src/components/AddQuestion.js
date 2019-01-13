@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { handleSaveQuestion } from '../actions/questions';
+import {handleUserAddQuestion } from '../actions/users'
 
 class AddQuestion extends Component {
   state = {
@@ -17,6 +18,10 @@ class AddQuestion extends Component {
   }
 
   handleAddQuestion = () => {
+    const { optionOne, optionTwo } = this.state;
+    const { authedUser, dispatch } = this.props.authedUser;
+    dispatch (handleSaveQuestion({optionOne, optionTwo, authedUser}, 
+      () => handleUserAddQuestion() ))
 
   }
 
