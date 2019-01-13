@@ -16,6 +16,7 @@ export function getInitialData() {
 }
 
 export function saveQuestion(question) {
+  console.log('IN API', question)
   return _saveQuestion(question);
 }
 

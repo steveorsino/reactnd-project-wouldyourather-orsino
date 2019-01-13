@@ -34,7 +34,9 @@ export function handleSaveQuestionAnswer(qid, authedUser, answer, userCb) {
 
 export function handleSaveQuestion(question, userCb) {
   return (dispatch) => {
-    return saveQuestion(question).then()
+    console.log('IN ACTION: ', question)
+    return saveQuestion(question)
+      .then((formattedQuestion) => console.log('FORMATTED QUESTION: ', formattedQuestion))
   }
 }
 

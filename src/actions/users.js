@@ -1,5 +1,6 @@
 export const RECEIVE_USERS = 'RECEIVE_USERS';
 export const VOTE_USER = 'VOTE_USER';
+export const ADD_QUESTION_USER = 'ADD_QUESTION_USER';
 
 export function receiveUsers(users) {
   return {
@@ -19,5 +20,8 @@ export function handleUserVote(qid, authedUser, answer) {
 }
 
 export function handleUserAddQuestion () {
-  
+  return {
+    type: ADD_QUESTION_USER,
+    
+  }
 }

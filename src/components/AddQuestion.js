@@ -19,8 +19,13 @@ class AddQuestion extends Component {
 
   handleAddQuestion = () => {
     const { optionOne, optionTwo } = this.state;
-    const { authedUser, dispatch } = this.props.authedUser;
-    dispatch (handleSaveQuestion({optionOne, optionTwo, authedUser}, 
+    const {  dispatch } = this.props;
+    const authedUser = this.props.authedUser.authedUser;
+    const optionOneText = optionOne;
+    const optionTwoText = optionTwo;
+    const author = authedUser;
+    console.log('In handleAddQuestion: ', {optionOneText, optionTwoText, author})
+    dispatch (handleSaveQuestion({optionOneText, optionTwoText, author}, 
       () => handleUserAddQuestion() ))
 
   }
@@ -35,6 +40,7 @@ class AddQuestion extends Component {
         <button
           disabled={this.state.optionOne === '' &&
                     this.state.optionOne === '' ? true : false }
+          onClick={this.handleAddQuestion}
         >Add Question</button>
       </div>
     )
