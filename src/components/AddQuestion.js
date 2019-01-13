@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { handleSaveQuestion } from '../actions/questions';
-import {handleUserAddQuestion } from '../actions/users'
+import {handleUserAddQuestion } from '../actions/users';
+import { Redirect } from 'react-router-dom';
 
 class AddQuestion extends Component {
   state = {
     optionOne: '',
-    optionTwo: ''
+    optionTwo: '',
+    redirect: false
   }
 
   handleOptionText = (e) => {
@@ -23,17 +25,20 @@ class AddQuestion extends Component {
     const optionOneText = optionOne;
     const optionTwoText = optionTwo;
     const author = authedUser;
-    console.log('In handleAddQuestion: ', {optionOneText, optionTwoText, author})
+
     dispatch (handleSaveQuestion({optionOneText, optionTwoText, author}, 
       (fq) =>  {
-        console.log("IN CALLBACK", fq)
-        return dispatch(handleUserAddQuestion(fq, authedUser))
+        dispatch(handleUserAddQuestion(fq, authedUser))
+        console.log('HERE!!!!!!!!!!!!!!!!');
+        this.setState({ redirect: true });
       })
     )
-//handleUserAddQuestion()
   }
 
   render() {
+    if (this.state.redirect) {
+      return <Redirect to='/' />
+    }
     return (
       <div className='question'>
         <h4 className='txt-center'>Ask a new question?</h4>

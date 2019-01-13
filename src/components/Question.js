@@ -12,7 +12,6 @@ class Question extends Component {
     const { authedUser } = this.props.authedUser;
     const pos = window.location.pathname.lastIndexOf('/');
     const id = window.location.pathname.substring(pos + 1);
-    console.log('Handle Vote ', `${answer}, ${authedUser}, ${id}`);
 
     this.props.dispatch(handleSaveQuestionAnswer(id, authedUser, answer,
       () => this.props.dispatch (handleUserVote(id, authedUser, answer))
@@ -21,7 +20,6 @@ class Question extends Component {
 
   render() {
     const { users, questions, authedUser } = this.props;
-    console.log('IN QUESTION: ', this.props)
     const pos = window.location.pathname.lastIndexOf('/');
     const id = window.location.pathname.substring(pos + 1);
     const author = questions[id] ? users[questions[id].author].name : '';
@@ -32,9 +30,6 @@ class Question extends Component {
     const answeredTwo = votesTwo.includes(authedUser.authedUser);
     const answered = answeredOne || answeredTwo;
 
-    console.log('Answered? ',answered);
-    console.log('Answered One? ', answeredOne);
-    console.log('Answered Two? ', answeredTwo);
     return (
       <div className='question'>
         <div className='preview-header'>

@@ -10,7 +10,6 @@ export function receiveUsers(users) {
 }
 
 export function handleUserVote(qid, authedUser, answer) {
-  console.log('VOTE_USER action = ', qid, authedUser, answer)
   return {
     type: VOTE_USER,
     qid,
