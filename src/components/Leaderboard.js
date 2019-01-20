@@ -4,14 +4,14 @@ import Leader from './Leader';
 
 class Leaderboard extends Component {
   render() {
-    const { users, authedUser } = this.props;
-    console.log('LEADERBOARD',this.props)
+    const { users } = this.props;
+
     return (
       <div>
         {users && Object.values(users).filter((user) => {
           return user
         }).map((user) => {
-          console.log('user: ',user.name )
+
           return (
             <Leader
               key={user.id}
@@ -24,7 +24,7 @@ class Leaderboard extends Component {
         }).sort((a,b) => {
           return ( (b.props.numAsked + b.props.numAnswered) - (a.props.numAsked + a.props.numAnswered) )
         })}
-        <Leader />
+ 
       </div>
     ) 
   }

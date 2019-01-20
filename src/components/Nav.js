@@ -8,22 +8,24 @@ class Nav extends Component {
 
   handleLogout = () => {
     this.props.dispatch(setAuthedUser(''));
+    localStorage.removeItem('authedUser')
   }
+  
   render(){
 
-    if (this.props.authedUser === '') {
-      return <Redirect to='/login' />
+    if (localStorage.getItem('authedUser') === null && 
+        window.location.pathname !== '/login') {
+        return <Redirect to='/login' />
     }
 
     const { users, authedUser } = this.props;
-    const userName = users[authedUser.authedUser].name;
 
     return (
-      <nav className='nav'>
+      <nav className='nav' style={{display: authedUser === '' ? 'none' : 'block'}}>
         <ul>
 
           <li>
-            <span className='welcome-message'>Welcome {userName}</span>
+            <span className='welcome-message'>Welcome {authedUser === undefined || authedUser === "" ? 'NotLoggedIN' : users[authedUser].name}</span>
           </li>
           <li>
             <NavLink to='/' exact className='nav-link' activeClassName='active'>
@@ -41,7 +43,7 @@ class Nav extends Component {
             </NavLink>
           </li>
           <li>
-            <NavLink to='/login' exact className='nav-link' activeClassName='active'>
+            <NavLink to='/login' exact className='nav-link' activeClassName='active' onClick={this.handleLogout}>
               log Out
             </NavLink>
           </li>          

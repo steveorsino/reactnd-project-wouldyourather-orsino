@@ -8,6 +8,7 @@ class AddQuestion extends Component {
   state = {
     optionOne: '',
     optionTwo: '',
+    disable: true,
     redirect: false
   }
 
@@ -16,12 +17,16 @@ class AddQuestion extends Component {
     this.setState(()=>({
       [id]: value
     }));
+    const isDisabled = (this.state.optionOne === '' || this.state.optionTwo === '');
+    this.setState(()=>({
+      disable: isDisabled
+    }));
   }
 
   handleAddQuestion = () => {
     const { optionOne, optionTwo } = this.state;
     const {  dispatch } = this.props;
-    const authedUser = this.props.authedUser.authedUser;
+    const authedUser = this.props.authedUser;
     const optionOneText = optionOne;
     const optionTwoText = optionTwo;
     const author = authedUser;
@@ -42,13 +47,12 @@ class AddQuestion extends Component {
     }
     return (
       <div className='question'>
-        <h4 className='txt-center'>Ask a new question?</h4>
+        <h4 className='txt-center'>Ask a new question.</h4>
         <h4 className='txt-center'>Would you rather...?</h4>
         <input id='optionOne' onChange={this.handleOptionText} className='option-field' type='text' placeholder='Enter option one'/>
         <input id='optionTwo' onChange={this.handleOptionText} className='option-field' type='text' placeholder='Enter option two'/>
         <button
-          disabled={this.state.optionOne === '' &&
-                    this.state.optionOne === '' ? true : false }
+          disabled={this.state.disable}
           onClick={this.handleAddQuestion}
         >Add Question</button>
       </div>

@@ -20,6 +20,7 @@ class QuestionList extends Component {
 
   render() {
 
+
     const { users, questions, authedUser } = this.props;
     console.log('Users',Object.values(users));
     console.log('Questions', Object.values(questions));
@@ -37,7 +38,7 @@ class QuestionList extends Component {
         {questions && Object.values(questions).filter((question) => {
           return (
             this.state.showAnswered === Object
-              .keys(users[authedUser.authedUser].answers)
+              .keys(users[authedUser].answers)
               .includes(question.id)
           )
           }).map((question) => {

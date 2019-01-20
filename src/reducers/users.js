@@ -7,8 +7,8 @@ export default function users (state={}, action) {
         ...state,
         ...action.users
       }
+      
     case VOTE_USER :
-    
       return {
         ...state,
         [action.authedUser]: {
