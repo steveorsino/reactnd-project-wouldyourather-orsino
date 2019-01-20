@@ -2,15 +2,18 @@ import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import { setAuthedUser } from '../actions/authedUser'
+import { setAuthedUser } from '../actions/authedUser';
+import { setEnteredPath } from '../actions/enteredPath';
 
 class Nav extends Component {
 
   handleLogout = () => {
     this.props.dispatch(setAuthedUser(''));
-    localStorage.removeItem('authedUser')
+    this.props.dispatch(setEnteredPath(''));
+    localStorage.setItem('currentPath', '');
+    localStorage.removeItem('authedUser');
   }
-  
+
   render(){
 
     if (localStorage.getItem('authedUser') === null && 
@@ -22,28 +25,28 @@ class Nav extends Component {
 
     return (
       <nav className='nav' style={{display: authedUser === '' ? 'none' : 'block'}}>
+      
         <ul>
-
           <li>
             <span className='welcome-message'>Welcome {authedUser === undefined || authedUser === "" ? 'NotLoggedIN' : users[authedUser].name}</span>
           </li>
           <li>
-            <NavLink to='/' exact className='nav-link' activeClassName='active'>
-              Dashboard
+            <NavLink to='/' exact className='nav-link'>
+              <span>Dashboard</span>
             </NavLink>
           </li>
           <li>
-            <NavLink to='/add' exact className='nav-link' activeClassName='active'>
-              Add Question
+            <NavLink to='/add' exact className='nav-link'>
+              <span>Add Question</span>
             </NavLink>
           </li>
           <li>
-            <NavLink to='/leaderboard' exact className='nav-link' activeClassName='active'>
+            <NavLink to='/leaderboard' exact className='nav-link'>
               Leaderboard
             </NavLink>
           </li>
           <li>
-            <NavLink to='/login' exact className='nav-link' activeClassName='active' onClick={this.handleLogout}>
+            <NavLink to='/login' exact className='nav-link' onClick={this.handleLogout}>
               log Out
             </NavLink>
           </li>          
@@ -53,10 +56,11 @@ class Nav extends Component {
   }
 }
 
-const mapStateToProps = ({users, authedUser}) => {
+const mapStateToProps = ({users, authedUser, enteredPath}) => {
   return {
     users,
     authedUser,
+    enteredPath
   }
 }
 

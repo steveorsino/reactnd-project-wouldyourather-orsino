@@ -3,6 +3,11 @@ import { connect } from 'react-redux';
 import Leader from './Leader';
 
 class Leaderboard extends Component {
+
+  componentWillMount() {
+    localStorage.setItem('currentPath', window.location.pathname)
+  }
+  
   render() {
     const { users } = this.props;
 

@@ -20,7 +20,7 @@ class Question extends Component {
   }
 
   componentWillMount() {
-    console.log('COmponent Will Mount')
+    localStorage.setItem('currentPath', window.location.pathname)
   }
   componentDidMount(){
     console.log('COmponent DID Mount')

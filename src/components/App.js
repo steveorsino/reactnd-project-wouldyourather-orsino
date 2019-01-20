@@ -10,13 +10,17 @@ import Question from './Question';
 import AddQuestion from './AddQuestion';
 import Leaderboard from './Leaderboard';
 import PageNotFound from './PageNotFound';
+import TitleLine from './TitleLine';
 
 class App extends Component {
 
   componentDidMount() {
+    if (localStorage.getItem('currentPath') === null) {
+      localStorage.setItem('currentPath', '')
+    }
     this.props.dispatch(handleInitialData());
-
-    if (localStorage.getItem('authedUser') != null) {
+     if (localStorage.getItem('authedUser') != null &&
+         localStorage.getItem('currentPath') !== this.props.enteredPath ) {
       this.props.dispatch(setEnteredPath(window.location.pathname))
       localStorage.removeItem('authedUser')
     }
@@ -33,56 +37,65 @@ class App extends Component {
       
       <Router>
         <Fragment>
-          <Nav />
           <Switch>
-          <Route
-            exact path='/'
-            render={() => (
-              <Fragment>
-                <QuestionList />
-              </Fragment>
-            )}
-          />
-          <Route 
-            exact path='/questions/:id'
-            render={() => (
-              <Fragment>
-                
-                <Question />
-              </Fragment>
-            )}
-          />
-          <Route
-            path='/login'
-            render={() => (
-              <LoginBox />
-            )}
-          />
-          <Route
-            path='/add'
-            render={() => (
-              <Fragment>
-                
-                <AddQuestion />
-              </Fragment>
-            )}
-          />
-          <Route
-            path='/leaderboard'
-            render={() => (
-              <Fragment>
-                <Leaderboard />
-              </Fragment>
-            )}
-          />
             <Route
-            path='/'
-            render={() => (
-              <Fragment>
-                <PageNotFound />
-              </Fragment>
-            )}
+              exact path='/'
+              render={() => (
+                <Fragment>
+                  <Nav />
+                  <TitleLine />
+                  <QuestionList />
+                </Fragment>
+              )}
             />
+            <Route 
+              exact path='/questions/:id'
+              render={() => (
+                <Fragment>
+                  <Nav />
+                  <TitleLine />
+                  <Question />
+                </Fragment>
+              )}
+            />
+            <Route
+              path='/login'
+              render={() => (
+                <Fragment>
+                  <TitleLine />
+                  <LoginBox />
+                </Fragment> 
+
+              )}
+            />
+            <Route
+              path='/add'
+              render={() => (
+                <Fragment>
+                  <Nav />
+                  <TitleLine />
+                  <AddQuestion />
+                </Fragment>
+              )}
+            />
+            <Route
+              path='/leaderboard'
+              render={() => (
+                <Fragment>
+                  <Nav />
+                  <TitleLine />
+                  <Leaderboard />
+                </Fragment>
+              )}
+            />
+              <Route
+              path='/'
+              render={() => (
+                <Fragment>
+                  <PageNotFound />
+                </Fragment>
+              )}
+              />
             </Switch>
         </Fragment>
       </Router>

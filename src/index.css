@@ -20,7 +20,7 @@ ul {
 }
 
 li {
-  display: inline;
+  display: inline-block;
   text-align: center;
   padding:0px 25px;
   position: relative;
@@ -57,7 +57,7 @@ img {
   color:black;
 }
 
-.active {
+.nav-link:hover {
   color: #26B5DF;
 }
 
@@ -77,9 +77,23 @@ img {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
+.add-question-btn {
+  width:50%;
+  display:block;
+  background-color: transparent;
+  margin: auto;
+  padding: 10px;
+  border: none;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
 .btn-active {
   background-color: #26B5DF;
   color:white;
+}
+.welcome-message {
+  color:#26B5DF;
+  font-weight: bolder;
 }
 
 .question-preview {
@@ -136,8 +150,16 @@ img {
   width: 80%;
   display: block;
   margin: auto;
+  padding: 10px;
+  margin-bottom: 15px;
 }
 
 .page-not-found {
   text-align: center;
+}
+
+.title-line {
+  text-align: center;
+  font-weight: lighter;
+  font-size: 32px;
 }

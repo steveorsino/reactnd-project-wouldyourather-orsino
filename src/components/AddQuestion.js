@@ -12,6 +12,10 @@ class AddQuestion extends Component {
     redirect: false
   }
 
+  componentWillMount() {
+    localStorage.setItem('currentPath', window.location.pathname)
+  }
+
   handleOptionText = (e) => {
     const { id, value } = e.target;
     this.setState(()=>({
@@ -52,6 +56,7 @@ class AddQuestion extends Component {
         <input id='optionOne' onChange={this.handleOptionText} className='option-field' type='text' placeholder='Enter option one'/>
         <input id='optionTwo' onChange={this.handleOptionText} className='option-field' type='text' placeholder='Enter option two'/>
         <button
+          className='add-question-btn'
           disabled={this.state.disable}
           onClick={this.handleAddQuestion}
         >Add Question</button>

@@ -7,6 +7,10 @@ class QuestionList extends Component {
     showAnswered: false,
   }
 
+  componentDidMount() {
+    localStorage.setItem('currentPath', window.location.pathname)
+  }
+
   handleAnswered = () => {
     this.setState({showAnswered: true});
     document.getElementById('unanswered').classList.remove('btn-active');
@@ -19,11 +23,7 @@ class QuestionList extends Component {
   }
 
   render() {
-
-
     const { users, questions, authedUser } = this.props;
-    console.log('Users',Object.values(users));
-    console.log('Questions', Object.values(questions));
 
     return (
       <div className='question-list-container'>

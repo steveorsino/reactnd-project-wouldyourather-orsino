@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import UserSelect from './UserSelect';
 import { setAuthedUser } from '../actions/authedUser';
-import { setEnteredPath } from '../actions/enteredPath';
 import { Redirect } from 'react-router-dom';
 
 
@@ -13,7 +12,6 @@ class LoginBox extends Component {
   }
 
   handleChange = (e) => {
-    console.log(e.target.value);
     this.setState({
       authedUser: e.target.value
     })
@@ -22,7 +20,6 @@ class LoginBox extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     if (this.state.authedUser !== ''){
-      console.log('In handleSubmit ', this.state.authedUser)
       this.props.dispatch(setAuthedUser(this.state.authedUser));
       this.setState({ redirect: true });
       localStorage.setItem('authedUser', this.state.authedUser)
@@ -35,7 +32,6 @@ class LoginBox extends Component {
       let path = '/'
       if (this.props.enteredPath !== '') {
         path = this.props.enteredPath;
-        //this.props.dispatch(setEnteredPath(''))
       }
       return <Redirect to={path} />
     }
@@ -44,7 +40,7 @@ class LoginBox extends Component {
     for (let user in this.props.users) {
       userArr.push([user]);
     }
-    console.log('Loginbox props', this.props)
+
     return (
       <div className='login-box'>
         <h3>Please Select a User</h3>
