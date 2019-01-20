@@ -22,9 +22,7 @@ class Question extends Component {
   componentWillMount() {
     localStorage.setItem('currentPath', window.location.pathname)
   }
-  componentDidMount(){
-    console.log('COmponent DID Mount')
-  }
+
 
   render() {
     const { users, questions, authedUser } = this.props;
@@ -46,29 +44,29 @@ class Question extends Component {
               {author} asks...
             </div>
             <h4 className='txt-center'>Would you rather...?</h4>
-            <div style={{marginBottom: '25px'}}>
+            <div style={{marginBottom: '45px'}}>
               {!answered && <input type='radio' name='optionOne' value='optionOne' onClick={this.handleVote}/>}
               {questions[id] ? questions[id].optionOne.text : ''}
-              {answeredOne ? <div style={{float: 'right', color: 'green', fontWeight: 'bold'}}>Your Choice!</div> : null}
+              {answeredOne ? <div style={{float: 'right', color: '#26B5DF', fontWeight: 'bold'}}>Your Choice!</div> : null}
               {answered && 
               <div className='answered-bar'>
                 <span style={{float: 'right'}}>{`${( votesOne.length / (votesOne.length + votesTwo.length) *100 ).toFixed(1)}%`}</span>
                 <div style={{width: votesOne.length / (votesOne.length + votesTwo.length) *100}} className='answered-fill'>
                 </div>
               </div>}
-              {answered && <span style={{float: 'right'}}>{`${votesOne.length} of ${votesOne.length + votesTwo.length}`}</span>}
+              {answered && <span style={{float: 'right'}}>{`${votesOne.length} of ${votesOne.length + votesTwo.length} votes`}</span>}
               </div>
             <div>
               {!answered && <input type='radio' name='optionTwo' value='optionTwo' onClick={this.handleVote}/>}
               {questions[id] ? questions[id].optionTwo.text : ''}
-              {answeredTwo ? <div style={{float: 'right', color: 'green', fontWeight: 'bold'}}>Your Choice!</div> : null}
+              {answeredTwo ? <div style={{float: 'right', color: '#26B5DF', fontWeight: 'bold'}}>Your Choice!</div> : null}
               {answered &&
               <div className='answered-bar'>
                 <span style={{float: 'right'}}>{`${( votesTwo.length / (votesOne.length + votesTwo.length) *100 ).toFixed(1) }%`}</span>
                 <div style={{width: votesTwo.length / (votesOne.length + votesTwo.length) *100}} className='answered-fill'>
                 </div>
               </div>}
-              {answered && <span style={{float: 'right'}}>{`${votesTwo.length} of ${votesOne.length + votesTwo.length}`}</span>}
+              {answered && <span style={{float: 'right'}}>{`${votesTwo.length} of ${votesOne.length + votesTwo.length} votes`}</span>}
             </div>
           </div>
           : <PageNotFound />

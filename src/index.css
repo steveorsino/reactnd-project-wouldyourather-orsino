@@ -44,6 +44,20 @@ img {
   margin: auto;
   margin-top: 20%;
 }
+.user-select {
+  height:35px;
+  padding: 0px 20px;
+  border:1px solid rgb(216, 216, 216);
+}
+
+.user-select-btn {
+  background-color: #26B5DF;
+  color: white;
+  font-weight: bolder;
+  border:none;
+  height: 35px;
+  padding: 0px 20px;
+}
 
 .nav {
   
@@ -156,6 +170,7 @@ img {
 
 .page-not-found {
   text-align: center;
+  margin-top: 200px;
 }
 
 .title-line {

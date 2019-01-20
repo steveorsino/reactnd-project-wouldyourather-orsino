@@ -45,13 +45,13 @@ class LoginBox extends Component {
       <div className='login-box'>
         <h3>Please Select a User</h3>
         <form onSubmit={this.handleSubmit}>
-          <select value={this.state.authedUser} onChange={this.handleChange}>
+          <select className='user-select' value={this.state.authedUser} onChange={this.handleChange}>
             <option value={''} disabled >Select User</option>
             {userArr.map((user) => (
               <UserSelect key={user} name={user} id={user} />
               ))}
           </select>
-          <button type='submit'>
+          <button className='user-select-btn' type='submit'>
             Login
           </button>
         </form>
