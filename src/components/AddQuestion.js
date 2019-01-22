@@ -8,7 +8,6 @@ class AddQuestion extends Component {
   state = {
     optionOne: '',
     optionTwo: '',
-    //disable: true,
     redirect: false
   }
 
@@ -21,10 +20,6 @@ class AddQuestion extends Component {
     this.setState(()=>({
       [id]: value
     }));
-    // const isDisabled = (this.state.optionOne === '' || this.state.optionTwo === '');
-    // this.setState(()=>({
-    //   disable: isDisabled
-    // }));
   }
 
   handleAddQuestion = () => {
