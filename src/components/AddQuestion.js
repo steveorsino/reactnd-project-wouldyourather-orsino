@@ -8,7 +8,7 @@ class AddQuestion extends Component {
   state = {
     optionOne: '',
     optionTwo: '',
-    disable: true,
+    //disable: true,
     redirect: false
   }
 
@@ -21,10 +21,10 @@ class AddQuestion extends Component {
     this.setState(()=>({
       [id]: value
     }));
-    const isDisabled = (this.state.optionOne === '' || this.state.optionTwo === '');
-    this.setState(()=>({
-      disable: isDisabled
-    }));
+    // const isDisabled = (this.state.optionOne === '' || this.state.optionTwo === '');
+    // this.setState(()=>({
+    //   disable: isDisabled
+    // }));
   }
 
   handleAddQuestion = () => {
@@ -57,7 +57,7 @@ class AddQuestion extends Component {
         <input id='optionTwo' onChange={this.handleOptionText} className='option-field' type='text' placeholder='Enter option two'/>
         <button
           className='add-question-btn'
-          disabled={this.state.disable}
+          disabled={this.state.optionOne === '' || this.state.optionTwo === ''}
           onClick={this.handleAddQuestion}
         >Add Question</button>
       </div>
